@@ -22,15 +22,18 @@ Through much experimentation with different models (chiefly K Nearest Neighbor, 
 
 *Education level, usual number of hours worked per week, occupation, value of home, bachelor's degree major, age, sex, and travel time to work.*
 
+I undersampled the dataset using "Near Miss" undersampling.
+
+![Before](/home/nick/Pictures/b4.png)
+
+---
+![After](/home/nick/Pictures/after1.png)
+
+
 I narrowed down my focus to the models that gave me the best R^2 results.
 
 
 ### Results: <br>
-
-
-
-
-
 
 
 
