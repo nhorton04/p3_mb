@@ -5,8 +5,8 @@ from predictor_api import make_prediction, feature_names
 app = flask.Flask(__name__)
 
 @app.route("/")
-def hello():
-    return "Welcome to my Application !"
+def index():
+    return flask.render_template('index.html')
 
 @app.route("/predict", methods=["POST", "GET"])
 def predict():

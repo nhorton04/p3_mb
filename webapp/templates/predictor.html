@@ -6,11 +6,6 @@
   </head>
 
   <body>
-    <ul>
-      {% for i in range(1,4) %}
-        <li>Item {{ i }}</li>
-      {% endfor %}
-    </ul>
     <form action="/predict">
       {% for f in feature_names %}
       <br>
