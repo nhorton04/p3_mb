@@ -12,10 +12,10 @@ import numpy as np
 
 # lr_model is our simple logistic regression model
 # lr_model.feature_names are the four different iris measurements
-with open("./models/lr.pickle", "rb") as f:
-    lr_model = pickle.load(f)
+with open("/home/nick/Documents/data/select_cols.p", "rb") as f:
+    df = pickle.load(f)
 
-feature_names = lr_model.feature_names
+feature_names = df.columns
 
 
 def make_prediction(feature_dict):
@@ -32,16 +32,17 @@ def make_prediction(feature_dict):
       probs: a list of dictionaries with keys 'name', 'prob'
     """
     x_input = []
-    for name in lr_model.feature_names:
+    for name in df.columns:
         x_input_ = float(feature_dict.get(name, 0))
         x_input.append(x_input_)
 
-    pred_probs = lr_model.predict_proba([x_input]).flat
+    # pred_probs = df.predict_proba([x_input]).flat
+    pred_probs = df.groupby(by='>50K').sum()
 
     probs = []
     for index in np.argsort(pred_probs)[::-1]:
         prob = {
-            'name': lr_model.target_names[index],
+            'columns': df.columns,
             'prob': round(pred_probs[index], 5)
         }
         probs.append(prob)

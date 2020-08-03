@@ -16,5 +16,9 @@ def predict():
                                 feature_names=feature_names,
                                 prediction=predictions)
 
+@app.route("/about")
+def about():
+    return flask.render_template('about.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
