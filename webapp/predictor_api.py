@@ -12,10 +12,14 @@ import numpy as np
 
 # lr_model is our simple logistic regression model
 # lr_model.feature_names are the four different iris measurements
-with open("/home/nick/Documents/data/select_cols.p", "rb") as f:
-    df = pickle.load(f)
+with open("./models/lr.p", "rb") as f:
+    lr = pickle.load(f)
 
-feature_names = df.columns
+with open("./models/xgb.p", "rb") as g:
+    xgb = pickle.load(g)
+
+model = xgb
+linear_reg = lr
 
 
 def make_prediction(feature_dict):
