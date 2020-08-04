@@ -14,23 +14,28 @@ Using classification, can we predict an individual's income bracket by looking a
 
 Data was downloaded from IPUMS (Integrated Public Use Microdata Series) for the year 2018. In csv format, the dataset initially had 269 features, but many were technical codes for tracking data across different years. Per the website's "About" section: `"Our signature activity is harmonizing variable codes and documentation to be fully consistent across datasets. This work rests on an extensive technical infrastructure developed over more than two decades, including the first structured metadata system for integrating disparate datasets."`
 
-I used the sklearn random forest feature importance module to visualize the features by importance. The exact order of features varied each time I ran the code (I guess because it's based off the results of random forest, which introduces some randomness / variability into the equation?) but followed the same general pattern, with 'UHRSWORK' consistently coming in first or second place. I also removed features such as 'EDUCD', because it is the same as 'EDUC' but the 'D' stands for detailed, which just means there were more 'outlier' codes added as possible values for the column, but mostly identical to the non-detailed row. Next!
+I used the sklearn random forest feature importance module to visualize the features by importance. The exact order of features varied each time I ran the code (I guess because it's based off the results of random forest, which introduces some randomness / variability into the equation?) but followed the same general pattern, with 'UHRSWORK' (usual hours worked per week) consistently coming in first or second place. I also removed features such as 'EDUCD', because it is the same as 'EDUC' but the 'D' stands for detailed, which just means there were more 'outlier' codes added as possible values for the column, but mostly identical to the non-detailed row. Next!
 
-![Features](/home/nick/Documents/data/feature_importance.png)
+### Feature Engineering:
 
-Through much experimentation with different models (chiefly K Nearest Neighbor, Logistic Regression, and Random Forest / Decision Tree), I pared down the features to a list of 10 which seemed most important:
+![Features](https://i.imgur.com/GTFiw9L.png)
+
+Using sklearn's feature_importance_ module, I
 
 *Education level, usual number of hours worked per week, occupation, value of home, bachelor's degree major, age, sex, and travel time to work.*
 
 I undersampled the dataset using "Near Miss" undersampling.
 
-![Before](/home/nick/Pictures/b4.png)
+![Before](https://i.imgur.com/H0i5IfA.png)
 
 ---
-![After](/home/nick/Pictures/after1.png)
+![After](https://i.imgur.com/O51IKw9.png)
 
+However, my R2 scores plummeted when I ran the balanced data in the models, so I just used the imbalanced data. The minority class is about 1/2 the size of the majority class, so it isn't *extremely* imbalanced in the first place.
 
-I narrowed down my focus to the models that gave me the best R^2 results.
+---
+
+Another thing that I thought would help but didn't was standardization using sklearn's StandardScaler. This made R2 scores nosedive even worse than the undersampled data, so I avoided this for my final models as well.
 
 
 ### Results: <br>
