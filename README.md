@@ -20,8 +20,6 @@ I used the sklearn random forest feature importance module to visualize the feat
 
 ![Features](https://i.imgur.com/GTFiw9L.png)
 
-Using sklearn's feature_importance_ module, I
-
 *Education level, usual number of hours worked per week, occupation, value of home, bachelor's degree major, age, sex, and travel time to work.*
 
 I undersampled the dataset using "Near Miss" undersampling.
